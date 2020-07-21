@@ -1,28 +1,29 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
+class Login :
 
-# 1. Khai bao bien browser
-browser  = webdriver.Chrome(executable_path="./chromedriver")
+    # 1. Khai bao bien browser
 
-# 2. Mở thử một trang web
-browser.get("http://facebook.com")
+    def __init__(self, name, password ):
+        self.name  = name
+        self.password = password;
+        self.browser = webdriver.Chrome(executable_path="./chromedriver")
 
-# 2a. Điền thông tin vào ô user và pass
+    def loginFacebook(self):
 
-txtUser = browser.find_element_by_id("email")
-txtUser.send_keys("thangnch") # <---  Điền username thật của các bạn vào đây
+        self.browser.get("http://facebook.com")
+        txtUser = self.browser.find_element_by_id("email")
+        txtUser.send_keys("0817045952") # <---  Điền username thật của các bạn vào đây
 
-txtPass = browser.find_element_by_id("pass")
-txtPass.send_keys("passwordfake")
+        txtPass = self.browser.find_element_by_id("pass")
+        txtPass.send_keys("123456vn")
 
-# 2b. Submit form
+        # 2b. Submit form
 
-txtPass.send_keys(Keys.ENTER)
+        txtPass.send_keys(Keys.ENTER)
 
 
-# 3. Dừng chương trình 5 giây
-sleep(5)
-
-# 4. Đóng trình duyệt
-browser.close()
+        # 3. Dừng chương trình 5 giây
+        sleep(2)
+        # 4. Đóng trình duyệt
