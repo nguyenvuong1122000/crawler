@@ -1,6 +1,8 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+
 class Login :
 
     # 1. Khai bao bien browser
@@ -11,6 +13,15 @@ class Login :
         self.browser = webdriver.Chrome(executable_path="./chromedriver")
 
     def loginFacebook(self):
+        option = Options()
+
+        option.add_argument("--disable-infobars")
+        option.add_argument("start-maximized")
+        option.add_argument("--disable-extensions")
+        option.add_experimental_option("prefs", {
+            "profile.default_content_setting_values.notifications": 1
+        })
+        self.browser = webdriver.Chrome(chrome_options=option, executable_path='./chromedriver.exe')
 
         self.browser.get("http://facebook.com")
         txtUser = self.browser.find_element_by_id("email")
